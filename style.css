@@ -1,0 +1,249 @@
+/* ---------- Theme Colors ---------- */
+
+:root {
+    --bg: #f3ebdd;
+    --card: #fff9ef;
+    --input: #fffdf8;
+    --text: #3f332a;
+    --heading: #6b4f3a;
+    --accent: #7b8065;
+    --border: #d8c9b5;
+}
+
+body.dark-mode {
+    --bg: #1c211f;
+    --card: #252c29;
+    --input: #1d2321;
+    --text: #e5e3d8;
+    --heading: #d0d1b4;
+    --accent: #78826b;
+    --border: #3b4540;
+}
+
+
+/* ---------- Basic Setup ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 30px 8%;
+    transition: 0.3s;
+}
+
+
+/* ---------- Header ---------- */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    color: var(--heading);
+    font-size: 38px;
+}
+
+
+/* ---------- Theme Button ---------- */
+
+#themeButton {
+    padding: 9px 13px;
+    border: none;
+    border-radius: 20px;
+    background: var(--border);
+    color: var(--text);
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
+/* ---------- Timer ---------- */
+
+.timer-section {
+    max-width: 500px;
+    margin: 0 auto 50px;
+    padding: 30px;
+    text-align: center;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.timer-section h2,
+.note-form h2,
+.notes-section h2 {
+    margin-bottom: 20px;
+    color: var(--heading);
+}
+
+#timer {
+    font-size: 55px;
+    font-weight: bold;
+    color: var(--accent);
+    margin: 15px 0;
+}
+
+#timerStatus {
+    margin-bottom: 20px;
+}
+
+.timer-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+/* ---------- Buttons ---------- */
+
+button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 7px;
+    background: var(--accent);
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+
+/* ---------- Note Form ---------- */
+
+.note-form {
+    max-width: 700px;
+    margin: 0 auto 50px;
+    padding: 30px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.note-form input,
+.note-form textarea,
+.note-form select,
+#searchInput {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: var(--input);
+    color: var(--text);
+    font-size: 16px;
+}
+
+.note-form textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+
+/* ---------- Notes Section ---------- */
+
+.notes-section {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.notes-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+#searchInput {
+    max-width: 300px;
+}
+
+
+/* ---------- Note Cards ---------- */
+
+#notesContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.note {
+    padding: 22px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    transition: 0.2s;
+}
+
+.note:hover {
+    transform: translateY(-3px);
+}
+
+.note h3 {
+    margin-bottom: 10px;
+    color: var(--heading);
+}
+
+.note p {
+    margin-bottom: 15px;
+}
+
+.note small {
+    color: var(--accent);
+}
+
+.note button {
+    margin-top: 15px;
+    margin-right: 6px;
+    padding: 8px 12px;
+    background: var(--border);
+    color: var(--text);
+}
+
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 20px;
+    }
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    header h1 {
+        font-size: 30px;
+    }
+
+    .notes-heading {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #searchInput {
+        max-width: none;
+    }
+
+    #notesContainer {
+        grid-template-columns: 1fr;
+    }
+
+    .timer-buttons {
+        flex-wrap: wrap;
+    }
+}

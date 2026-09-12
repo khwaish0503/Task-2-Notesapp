@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khwaish Notes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>My Notes</h1>
+        <button id="themeButton">🌙</button>
+    </header>
+
+    <main>
+        <!-- ---------- Pomodoro Timer ---------- -->
+
+<section class="timer-section">
+
+    <h2>☕ Focus Timer</h2>
+
+    <div id="timer">25:00</div>
+
+    <p id="timerStatus">Focus Session</p>
+
+    <div class="timer-buttons">
+        <button id="startButton">Start</button>
+        <button id="pauseButton">Pause</button>
+        <button id="resetButton">Reset</button>
+    </div>
+
+</section>
+
+        <section class="note-form">
+            <h2>Create a Note</h2>
+
+            <input type="text" id="noteTitle" placeholder="Note title">
+
+            <textarea id="noteContent" placeholder="Write your note..."></textarea>
+
+            <select id="noteCategory">
+                <option value="Study">📚 Study</option>
+                <option value="Coding">💻 Coding</option>
+                <option value="Ideas">💡 Ideas</option>
+                <option value="Personal">📝 Personal</option>
+                <option value="Important">📌 Important</option>
+            </select>
+
+            <button id="addNoteButton">Add Note</button>
+        </section>
+
+
+        <section class="notes-section">
+
+            <div class="notes-heading">
+                <h2>My Notes</h2>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search notes..."
+                >
+            </div>
+
+            <div id="notesContainer">
+                <!-- Notes will appear here -->
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
