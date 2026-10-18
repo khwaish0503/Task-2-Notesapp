@@ -264,32 +264,16 @@ async function deleteNote(id) {
 
 
 /* ---------- Pin Note ---------- */
-
 async function pinNote(id) {
 
-    const note = notes.find(function (note) {
-        return note._id === id;
+    const response = await fetch(`/api/notes/${id}/pin`, {
+        method: "PATCH"
     });
 
-    if (!note) {
+    if (!response.ok) {
+        alert("Could not pin the note.");
         return;
     }
-
-    const response = await fetch(`/api/notes/${id}`, {
-
-        method: "PUT",
-
-        headers: {
-            "Content-Type": "application/json"
-        },
-
-        body: JSON.stringify({
-            title: note.title,
-            content: note.content,
-            category: note.category,
-            pinned: !note.pinned
-        })
-    });
 
     const updatedNote = await response.json();
 
@@ -300,13 +284,11 @@ async function pinNote(id) {
     notes[noteIndex] = updatedNote;
 
     notes.sort(function (a, b) {
-        return b.pinned - a.pinned;
+        return Number(b.pinned) - Number(a.pinned);
     });
 
     displayNotes();
 }
-
-
 /* ---------- Search Notes ---------- */
 
 searchInput.addEventListener("input", function () {

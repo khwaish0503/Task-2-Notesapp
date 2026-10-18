@@ -46,9 +46,7 @@ const Note = mongoose.model("Note", noteSchema);
 /* ---------- Get Notes ---------- */
 
 app.get("/api/notes", async function (req, res) {
-
     const notes = await Note.find().sort({ pinned: -1 });
-
     res.json(notes);
 });
 
@@ -73,26 +71,45 @@ app.post("/api/notes", async function (req, res) {
 
 app.put("/api/notes/:id", async function (req, res) {
 
-    const updatedNote = await Note.findByIdAndUpdate(
-        req.params.id,
-        {
-            title: req.body.title,
-            content: req.body.content,
-            category: req.body.category,
-            pinned: req.body.pinned
-        },
-        {
-            new: true
-        }
-    );
+    const note = await Note.findById(req.params.id);
 
-    if (!updatedNote) {
+    if (!note) {
         return res.status(404).json({
             message: "Note not found"
         });
     }
 
-    res.json(updatedNote);
+    note.title = req.body.title;
+    note.content = req.body.content;
+    note.category = req.body.category;
+
+    if (typeof req.body.pinned === "boolean") {
+        note.pinned = req.body.pinned;
+    }
+
+    await note.save();
+
+    res.json(note);
+});
+
+
+/* ---------- Pin / Unpin Note ---------- */
+
+app.patch("/api/notes/:id/pin", async function (req, res) {
+
+    const note = await Note.findById(req.params.id);
+
+    if (!note) {
+        return res.status(404).json({
+            message: "Note not found"
+        });
+    }
+
+    note.pinned = !note.pinned;
+
+    await note.save();
+
+    res.json(note);
 });
 
 
